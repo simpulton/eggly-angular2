@@ -9,7 +9,7 @@ import {BookmarkEdit} from './edit/bookmark-edit';
 
 @Component({
   selector: 'bookmarks',
-  providers: [ FORM_PROVIDERS, CategoriesService, BookmarksService],
+  providers: [ FORM_PROVIDERS, CategoriesService],
   directives: [ ROUTER_DIRECTIVES ],
   pipes: [CategoryFilter],
   template: require('./bookmarks.tmpl.html')
@@ -41,7 +41,5 @@ export class Bookmarks {
 
     deleteBookmark(bookmark) {
         this.BookmarksService.deleteBookmark(bookmark);
-
-        this.getBookmarks();
     }
 }

@@ -1,17 +1,13 @@
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <div *ngFor="#bookmark of bookmarks | category: CategoriesService.getCurrentCategoryName()">
-        <button type="button" class="close" (click)="deleteBookmark(bookmark)">&times;</button>
-        <button type="button" class="btn btn-link" [routerLink]="['/Edit', {category: bookmark.category, bookmarkId: bookmark.id}]" ><span class="glyphicon glyphicon-pencil"></span>
-        </button>
-        <a [href]="bookmark.url" target="_blank">{{bookmark.title}}</a>
-    </div>
-    <hr/>
-    <ui-view>
-        <div ng-if="getCurrentCategory()">
-            <button type="button" class="btn btn-link" [routerLink]="['/Create', {category: RouteParams.get('category')}]">
-                <span class="glyphicon glyphicon-plus"></span>
-                Create Bookmark
-            </button>
-        </div>
-    </ui-view>
+<div *ngFor="#bookmark of bookmarks | category: CategoriesService.getCurrentCategoryName()">
+    <button type="button" class="close" (click)="deleteBookmark(bookmark)">&times;</button>
+    <button type="button" class="btn btn-link" [routerLink]="['/Edit', {category: bookmark.category, bookmarkId: bookmark.id}]" ><span class="glyphicon glyphicon-pencil"></span>
+    </button>
+    <a [href]="bookmark.url" target="_blank">{{bookmark.title}}</a>
+</div>
+<hr/>
+<div *ngIf="CategoriesService.getCurrentCategory()">
+    <button type="button" class="btn btn-link" [routerLink]="['/Create', {category: RouteParams.get('category')}]">
+        <span class="glyphicon glyphicon-plus"></span>
+        Create Bookmark
+    </button>
 </div>

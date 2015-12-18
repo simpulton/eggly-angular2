@@ -5,7 +5,7 @@ import {BookmarksService} from '../../../providers/bookmarks-service';
 
 @Component({
   selector: 'bookmark-edit',
-  providers: [ FORM_PROVIDERS, BookmarksService],
+  providers: [ FORM_PROVIDERS],
   directives: [ ],
   pipes: [],
   template: require('./bookmark-edit.tmpl.html')
