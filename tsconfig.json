@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+  },
+  "files": [
+    "typings/main.d.ts",
+    "src/app/app.ts",
+    "src/app/providers/categories-service.ts",
+    "src/app/providers/bookmarks-service.ts",
+    "src/app/categories/categories.ts",
+    "src/app/categories/bookmarks/bookmarks.ts",
+    "src/app/categories/bookmarks/create/bookmark-create.ts",
+    "src/app/categories/bookmarks/edit/bookmark-edit.ts",
+    "src/bootstrap.ts",
+    "src/vendor.ts"
+  ],
+  "compileOnSave": false
+}
