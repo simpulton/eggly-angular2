@@ -20,7 +20,7 @@ export class CategoriesService {
     cacheCategories(result) {
         this.categories = result;
         return this.categories;
-    }
+    };
 
     getCategories() {
         return this.categories
@@ -32,7 +32,7 @@ export class CategoriesService {
     setCurrentCategory(category) {
         this.getCategoryByName(category)
             .subscribe((category: ICategory) => this.currentCategory = category);
-    }
+    };
 
     getCurrentCategory() {
         return this.currentCategory;

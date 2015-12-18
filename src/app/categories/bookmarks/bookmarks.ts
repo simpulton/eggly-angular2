@@ -1,5 +1,5 @@
 import {Component, Pipe} from 'angular2/core';
-import {RouteParams, Router, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Router, RouteConfig, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {BookmarksService} from '../../providers/bookmarks-service';
 import {CategoriesService} from '../../providers/categories-service';
@@ -9,7 +9,7 @@ import {BookmarkEdit} from './edit/bookmark-edit';
 
 @Component({
   selector: 'bookmarks',
-  providers: [ FORM_PROVIDERS, CategoriesService],
+  providers: [ FORM_PROVIDERS, CategoriesService, BookmarksService],
   directives: [ ROUTER_DIRECTIVES ],
   pipes: [CategoryFilter],
   template: require('./bookmarks.tmpl.html')
