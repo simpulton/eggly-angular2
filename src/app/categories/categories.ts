@@ -3,7 +3,6 @@ import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {CategoriesService} from '../providers/categories-service';
-import 'rxjs';
 
 @Component({
   selector: 'categories',

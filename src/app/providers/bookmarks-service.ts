@@ -1,6 +1,6 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
-import * as Rx from 'rxjs';
+import {Observable} from 'rxjs';
 import {find, remove, findIndex} from 'lodash';
 
 interface IBookmark {
@@ -19,7 +19,7 @@ export class BookmarksService {
 
     getBookmarks() {
         return this.bookmarks
-            ? Rx.Observable.of(this.bookmarks)
+            ? Observable.of(this.bookmarks)
             : this.http.get(this.URLS.FETCH)
                 .map(res => {
                     return this.cacheBookmarks(res.json());
@@ -43,7 +43,7 @@ export class BookmarksService {
         };
 
         if (this.bookmarks) {
-            return Rx.Observable.of(this.bookmarks)
+            return Observable.of(this.bookmarks)
                 .map(bookmarks => findBookmark(bookmarks));
         } else {
             return this.getBookmarks()

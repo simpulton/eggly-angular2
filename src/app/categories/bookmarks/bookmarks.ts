@@ -1,6 +1,7 @@
 import {Component, Pipe} from 'angular2/core';
 import {Router, RouteConfig, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
+import {clone} from 'lodash';
 import {BookmarksService} from '../../providers/bookmarks-service';
 import {CategoriesService} from '../../providers/categories-service';
 import {CategoryFilter} from '../category-filter';
@@ -34,7 +35,7 @@ export class Bookmarks {
     getBookmarks() {
         this.BookmarksService.getBookmarks()
             .subscribe(
-                data => this.bookmarks = _.clone(data),
+                data => this.bookmarks = clone(data),
                 error => console.error(error)
             );
     }

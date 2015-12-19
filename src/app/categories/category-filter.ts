@@ -5,12 +5,9 @@ import {Pipe} from 'angular2/core';
 })
 
 export class CategoryFilter {
-    transform(value, [category]) {
-        console.log('filtering');
-        if (value) {
-            return category
-                ? value.filter((item) => item.category === category)
-                : value;
-        }
+    transform(value = [], [category]) {
+        return category
+            ? value.filter((item) => item.category === category)
+            : value;
     }
 }

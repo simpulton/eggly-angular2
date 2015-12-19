@@ -1,6 +1,6 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
-import * as Rx from 'rxjs';
+import {Observable} from 'rxjs';
 import {find} from 'lodash';
 
 interface ICategory {
@@ -24,7 +24,7 @@ export class CategoriesService {
 
     getCategories() {
         return this.categories
-            ? Rx.Observable.from(this.categories)
+            ? Observable.from(this.categories)
             : this.http.get(this.URLS.FETCH)
                 .map(res => this.cacheCategories(res.json()));
     };
@@ -48,7 +48,7 @@ export class CategoriesService {
         };
 
         if (this.categories) {
-            return Rx.Observable.from(this.categories)
+            return Observable.from(this.categories)
                 .map(categories => findCategory(categories));
         } else {
             return this.getCategories()
