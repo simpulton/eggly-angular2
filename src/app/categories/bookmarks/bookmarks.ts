@@ -34,12 +34,14 @@ export class Bookmarks {
     getBookmarks() {
         this.BookmarksService.getBookmarks()
             .subscribe(
-                data => this.bookmarks = data,
+                data => this.bookmarks = _.clone(data),
                 error => console.error(error)
             );
     }
 
     deleteBookmark(bookmark) {
         this.BookmarksService.deleteBookmark(bookmark);
+
+        this.getBookmarks();
     }
 }

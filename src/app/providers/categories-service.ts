@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import * as Rx from 'rxjs';
-import * as _ from 'lodash';
+import {find} from 'lodash';
 
 interface ICategory {
     id: number; name: string;
@@ -44,7 +44,7 @@ export class CategoriesService {
 
     getCategoryByName(categoryName: string) {
         let findCategory = (categories) => {
-            return _.find(categories, {name: categoryName});
+            return find(categories, {name: categoryName});
         };
 
         if (this.categories) {

@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import * as Rx from 'rxjs';
-import * as _ from 'lodash';
+import {find, remove, findIndex} from 'lodash';
 
 interface IBookmark {
     id: number; title: string; url: string; category: string;
@@ -32,14 +32,14 @@ export class BookmarksService {
     }
 
     findBookmark(bookmarkId) {
-        return _.find(this.bookmarks, function (bookmark) {
+        return find(this.bookmarks, function (bookmark) {
             return bookmark.id === parseInt(bookmarkId, 10);
         });
     }
 
     getBookmarkById(bookmarkId) {
         let findBookmark = (bookmarks) => {
-            return _.find(bookmarks, {id: parseInt(bookmarkId)});
+            return find(bookmarks, {id: parseInt(bookmarkId)});
         };
 
         if (this.bookmarks) {
@@ -57,7 +57,7 @@ export class BookmarksService {
     };
 
     updateBookmark(bookmark) {
-        var index = _.findIndex(this.bookmarks, function (b) {
+        var index = findIndex(this.bookmarks, function (b) {
             return b.id === bookmark.id;
         });
 
@@ -65,7 +65,7 @@ export class BookmarksService {
     };
 
     deleteBookmark(bookmark) {
-        _.remove(this.bookmarks, function (b) {
+        remove(this.bookmarks, function (b) {
             return b.id === bookmark.id;
         });
     };

@@ -4,7 +4,7 @@
     </button>
     <a [href]="bookmark.url" target="_blank">{{bookmark.title}}</a>
 </div>
-<hr/>
+<hr *ngIf="CategoriesService.getCurrentCategory()"/>
 <div *ngIf="CategoriesService.getCurrentCategory()">
     <button type="button" class="btn btn-link" [routerLink]="['/Create', {category: RouteParams.get('category')}]">
         <span class="glyphicon glyphicon-plus"></span>
