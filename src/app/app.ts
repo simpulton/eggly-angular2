@@ -11,7 +11,6 @@ import {BookmarksService} from './providers/bookmarks-service';
   providers: [BookmarksService],
   directives: [ ROUTER_DIRECTIVES, Categories ],
   pipes: [],
-  styleUrls: [],
   template: `
     <main>
         <div class="container-fluid">
@@ -23,7 +22,15 @@ import {BookmarksService} from './providers/bookmarks-service';
             </div>
         </div>
     </main>
-  `
+  `,
+  styles: [
+      `
+          .main {
+            padding-top: 96px;
+            padding-left: 24px;
+          }
+      `
+  ]
 })
 
 @RouteConfig([

@@ -1,6 +1,6 @@
 <div class="col-sm-3 col-md-2 sidebar">
-    <a [routerLink]="['/Bookmarks']">
-        <img class="logo" src="img/eggly-logo.png">
+    <a [routerLink]="['/Bookmarks']" class="logo">
+        <img src="img/eggly-logo.png">
     </a>
     <ul class="nav nav-sidebar">
         <li *ngFor="#category of categories" ng-class="{'active':isCurrentCategory(category)}">

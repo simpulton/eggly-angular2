@@ -9,7 +9,8 @@ import {Category} from '../providers/category-model';
   providers: [ CategoriesService ],
   directives: [ ROUTER_DIRECTIVES ],
   pipes: [],
-  template: require('./categories.tmpl.html')
+  template: require('./categories.tmpl.html'),
+  styles: [require('./categories.css')]
 })
 
 export class Categories {
