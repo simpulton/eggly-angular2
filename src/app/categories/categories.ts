@@ -1,26 +1,26 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http} from 'angular2/http';
-import {FORM_PROVIDERS} from 'angular2/common';
 import {CategoriesService} from '../providers/categories-service';
+import {Category} from '../providers/category-model';
 
 @Component({
   selector: 'categories',
-  providers: [ FORM_PROVIDERS, CategoriesService],
+  providers: [ CategoriesService ],
   directives: [ ROUTER_DIRECTIVES ],
   pipes: [],
   template: require('./categories.tmpl.html')
 })
 
 export class Categories {
-    public categories;
+    public categories: Category[];
 
     constructor(public CategoriesService: CategoriesService) {};
 
     ngOnInit() {
         this.CategoriesService.getCategories()
             .subscribe(
-                data => this.categories = data,
+                (data: Category[]) => this.categories = data,
                 error => console.error(error)
             );
     }

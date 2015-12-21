@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {RouteParams, Router} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {BookmarksService} from '../../../providers/bookmarks-service';
+import {Bookmark} from '../../../providers/bookmark-model';
 
 @Component({
   selector: 'bookmark-create',
@@ -12,7 +13,7 @@ import {BookmarksService} from '../../../providers/bookmarks-service';
 })
 
 export class BookmarkCreate {
-    public newBookmark: any;
+    public newBookmark: Bookmark;
 
     constructor(
         public RouteParams: RouteParams,
@@ -26,23 +27,24 @@ export class BookmarkCreate {
         this.BookmarksService.getBookmarks().subscribe();
     }
 
-    returnToBookmarks() {
+    returnToBookmarks(): void {
         this.Router.navigate(['Bookmarks', {
             category: this.RouteParams.get('category')
         }]);
     }
 
-    cancelCreating() {
+    cancelCreating(): void {
         this.returnToBookmarks();
     }
 
-    createBookmark() {
+    createBookmark(): void {
         this.BookmarksService.createBookmark(this.newBookmark);
         this.returnToBookmarks();
     }
 
-    resetForm() {
+    resetForm(): void {
         this.newBookmark = {
+            id: 0,
             title: '',
             url: '',
             category: this.RouteParams.get('category')

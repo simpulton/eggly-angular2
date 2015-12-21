@@ -1,24 +1,23 @@
-import {Component, Pipe} from 'angular2/core';
-import {Router, RouteConfig, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
-import {FORM_PROVIDERS} from 'angular2/common';
+import {Component} from 'angular2/core';
+import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {clone} from 'lodash';
 import {BookmarksService} from '../../providers/bookmarks-service';
 import {CategoriesService} from '../../providers/categories-service';
+import {Category} from '../../providers/category-model';
+import {Bookmark} from '../../providers/bookmark-model';
 import {CategoryFilter} from '../category-filter';
-import {BookmarkCreate} from './create/bookmark-create';
-import {BookmarkEdit} from './edit/bookmark-edit';
 
 @Component({
   selector: 'bookmarks',
-  providers: [ FORM_PROVIDERS, CategoriesService],
+  providers: [CategoriesService],
   directives: [ ROUTER_DIRECTIVES ],
   pipes: [CategoryFilter],
   template: require('./bookmarks.tmpl.html')
 })
 
 export class Bookmarks {
-    public bookmarks: any;
-    public category: any;
+    public bookmarks: Bookmark[];
+    public category: Category[];
 
     constructor(
         public BookmarksService: BookmarksService,
@@ -32,7 +31,7 @@ export class Bookmarks {
         this.getBookmarks();
     }
 
-    getBookmarks() {
+    getBookmarks(): void {
         this.BookmarksService.getBookmarks()
             .subscribe(
                 data => this.bookmarks = clone(data),
@@ -40,7 +39,7 @@ export class Bookmarks {
             );
     }
 
-    deleteBookmark(bookmark) {
+    deleteBookmark(bookmark): void {
         this.BookmarksService.deleteBookmark(bookmark);
 
         this.getBookmarks();

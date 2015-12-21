@@ -2,7 +2,8 @@ import {Component} from 'angular2/core';
 import {RouteParams, Router} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {BookmarksService} from '../../../providers/bookmarks-service';
-import {extend} from 'lodash';
+import {Bookmark} from '../../../providers/bookmark-model';
+import {clone} from 'lodash';
 
 @Component({
   selector: 'bookmark-edit',
@@ -13,8 +14,8 @@ import {extend} from 'lodash';
 })
 
 export class BookmarkEdit {
-    public bookmark;
-    public editedBookmark;
+    public bookmark: Bookmark;
+    public editedBookmark: Bookmark;
 
     constructor(
         public BookmarksService: BookmarksService,
@@ -23,32 +24,37 @@ export class BookmarkEdit {
     ) {}
 
     ngOnInit() {
-        this.bookmark = this.editedBookmark = {};
+        this.bookmark = this.editedBookmark = {
+            id: 0,
+            title: '',
+            url: '',
+            category: ''
+        };
 
         this.BookmarksService.getBookmarkById(this.RouteParams.get('bookmarkId'))
             .subscribe(bookmark => {
                 if (bookmark) {
                     this.bookmark = bookmark;
-                    this.editedBookmark = extend(this.bookmark, {});
+                    this.editedBookmark = clone(this.bookmark);
                 } else {
                     this.returnToBookmarks();
                 }
             });
     }
 
-    returnToBookmarks() {
+    returnToBookmarks(): void {
         this.Router.navigate(['/Bookmarks', {
             category: this.RouteParams.get('category')
         }]);
     }
 
-    updateBookmark() {
-        this.bookmark = extend(this.editedBookmark, {});
+    updateBookmark(): void {
+        this.bookmark = clone(this.editedBookmark);
         this.BookmarksService.updateBookmark(this.editedBookmark);
         this.returnToBookmarks();
     }
 
-    cancelEditing() {
+    cancelEditing(): void {
         this.returnToBookmarks();
     }
 }

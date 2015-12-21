@@ -2,22 +2,19 @@ import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {Observable} from 'rxjs';
 import {find, remove, findIndex} from 'lodash';
-
-interface IBookmark {
-    id: number; title: string; url: string; category: string;
-}
+import {Bookmark} from './bookmark-model';
 
 @Injectable()
 export class BookmarksService {
-    private currentCategory: IBookmark;
-    private bookmarks: IBookmark[];
+    private currentCategory: Bookmark;
+    private bookmarks: Bookmark[];
     private URLS: {FETCH: string} = {
         FETCH: 'data/bookmarks.json'
     };
 
     constructor(public http: Http) {};
 
-    getBookmarks() {
+    getBookmarks(): Observable<Bookmark[]> {
         return this.bookmarks
             ? Observable.of(this.bookmarks)
             : this.http.get(this.URLS.FETCH)
@@ -26,19 +23,19 @@ export class BookmarksService {
                 });
     }
 
-    cacheBookmarks(result) {
+    cacheBookmarks(result: Bookmark[]): Bookmark[] {
         this.bookmarks = result;
         return this.bookmarks;
     }
 
-    findBookmark(bookmarkId) {
-        return find(this.bookmarks, function (bookmark) {
+    findBookmark(bookmarkId: string): Bookmark {
+        return find(this.bookmarks, function (bookmark: Bookmark) {
             return bookmark.id === parseInt(bookmarkId, 10);
         });
     }
 
-    getBookmarkById(bookmarkId) {
-        let findBookmark = (bookmarks) => {
+    getBookmarkById(bookmarkId: string): Observable<Bookmark> {
+        let findBookmark = (bookmarks: Bookmark[]) => {
             return find(bookmarks, {id: parseInt(bookmarkId)});
         };
 
@@ -51,21 +48,21 @@ export class BookmarksService {
         }
     };
 
-    createBookmark(bookmark) {
+    createBookmark(bookmark: Bookmark): void {
         bookmark.id = this.bookmarks.length;
         this.bookmarks.push(bookmark);
     };
 
-    updateBookmark(bookmark) {
-        var index = findIndex(this.bookmarks, function (b) {
+    updateBookmark(bookmark: Bookmark): void {
+        var index = findIndex(this.bookmarks, function (b: Bookmark) {
             return b.id === bookmark.id;
         });
 
         this.bookmarks[index] = bookmark;
     };
 
-    deleteBookmark(bookmark) {
-        remove(this.bookmarks, function (b) {
+    deleteBookmark(bookmark: Bookmark): void {
+        remove(this.bookmarks, function (b: Bookmark) {
             return b.id === bookmark.id;
         });
     };
