@@ -4,10 +4,11 @@ import {Categories} from './categories/categories';
 import {Bookmarks} from './categories/bookmarks/bookmarks';
 import {BookmarkCreate} from './categories/bookmarks/create/bookmark-create';
 import {BookmarkEdit} from './categories/bookmarks/edit/bookmark-edit';
+import {BookmarksService} from './providers/bookmarks-service';
 
 @Component({
   selector: 'app',
-  providers: [],
+  providers: [BookmarksService],
   directives: [ ROUTER_DIRECTIVES, Categories ],
   pipes: [],
   styleUrls: [],
