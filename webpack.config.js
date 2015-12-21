@@ -1,5 +1,3 @@
-// @AngularClass
-
 /*
  * Helper: root(), and rootDir() are defined at the bottom
  */
