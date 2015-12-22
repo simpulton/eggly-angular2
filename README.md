@@ -33,7 +33,7 @@ Navigate to <a href="http://localhost:3000" target="_blank">http://localhost:300
 > For a complete list of commands, view the `scripts` attribute in the
 <a href="https://github.com/simpulton/eggly-angular2/blob/master/package.json" target="_blank">`package.json`</a> file.
 
-# TypeScript
+## TypeScript
 To take full advantage of TypeScript, make sure to install it globally.
 ``` bash
 npm i -g typescript
