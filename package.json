@@ -1,15 +1,15 @@
 {
-  "name": "angular2-webpack-starter",
+  "name": "eggly-angular2",
   "version": "0.0.0",
-  "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E), Karma, Protractor, Jasmine, TypeScript, and Webpack by AngularClass",
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
+  "description": "An Angular 2 version of Eggly (Router, Http, Forms, Services, Tests, E2E), Karma, Protractor, Jasmine, TypeScript, and Webpack",
+  "author": "Luke Ruebbelke <lukas@angularclass.com>",
+  "homepage": "https://github.com/simpulton/eggly-angular2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/simpulton/eggly-angular2.git"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/simpulton/eggly-angular2/issues"
   },
   "license": "MIT",
   "main": "",
