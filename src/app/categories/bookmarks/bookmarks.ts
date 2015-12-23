@@ -33,7 +33,7 @@ export class Bookmarks {
 
     getBookmarks(): void {
         this.BookmarksService.getBookmarks()
-            .subscribe(
+            .then(
                 data => this.bookmarks = clone(data),
                 error => console.error(error)
             );

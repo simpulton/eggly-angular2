@@ -24,7 +24,7 @@ export class BookmarkCreate {
     ngOnInit() {
         this.resetForm();
 
-        this.BookmarksService.getBookmarks().subscribe();
+        this.BookmarksService.getBookmarks();
     }
 
     returnToBookmarks(): void {

@@ -32,7 +32,7 @@ export class BookmarkEdit {
         };
 
         this.BookmarksService.getBookmarkById(this.RouteParams.get('bookmarkId'))
-            .subscribe(bookmark => {
+            .then(bookmark => {
                 if (bookmark) {
                     this.bookmark = bookmark;
                     this.editedBookmark = clone(this.bookmark);

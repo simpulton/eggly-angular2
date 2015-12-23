@@ -1,8 +1,9 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
-import {Observable} from 'rxjs';
 import {find} from 'lodash';
 import {Category} from './category-model';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CategoriesService {
@@ -19,16 +20,17 @@ export class CategoriesService {
         return this.categories;
     };
 
-    getCategories(): Observable<Category[]> {
+    getCategories(): Promise<Category[]> {
         return this.categories
-            ? Observable.from(this.categories)
+            ? Promise.resolve(this.categories)
             : this.http.get(this.URLS.FETCH)
-                .map(res => this.cacheCategories(res.json()));
+                .map(res => this.cacheCategories(res.json()))
+                .toPromise();
     };
 
     setCurrentCategory(categoryName: string): void {
         this.getCategoryByName(categoryName)
-            .subscribe((category: Category) => this.currentCategory = category);
+            .then((category: Category) => this.currentCategory = category);
     };
 
     getCurrentCategory(): Category {
@@ -39,17 +41,17 @@ export class CategoriesService {
         return this.currentCategory ? this.currentCategory.name : '';
     };
 
-    getCategoryByName(categoryName: string): Observable<Category> {
+    getCategoryByName(categoryName: string): Promise<Category> {
         let findCategory = (categories: Category[]) => {
             return find(categories, {name: categoryName});
         };
 
         if (this.categories) {
-            return Observable.from(this.categories)
-                .map((categories: Category[]) => findCategory(categories));
+            return Promise.resolve(this.categories)
+                .then((categories: Category[]) => findCategory(categories));
         } else {
             return this.getCategories()
-                .map((categories: Category[]) => findCategory(categories));
+                .then((categories: Category[]) => findCategory(categories));
         }
     };
 

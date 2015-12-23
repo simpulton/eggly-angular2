@@ -1,8 +1,9 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
-import {Observable} from 'rxjs';
 import {find, remove, findIndex} from 'lodash';
 import {Bookmark} from './bookmark-model';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BookmarksService {
@@ -14,13 +15,13 @@ export class BookmarksService {
 
     constructor(public http: Http) {};
 
-    getBookmarks(): Observable<Bookmark[]> {
+    getBookmarks(): Promise<Bookmark[]> {
         return this.bookmarks
-            ? Observable.of(this.bookmarks)
+            ? Promise.resolve(this.bookmarks)
             : this.http.get(this.URLS.FETCH)
                 .map(res => {
                     return this.cacheBookmarks(res.json());
-                });
+                }).toPromise();
     }
 
     cacheBookmarks(result: Bookmark[]): Bookmark[] {
@@ -34,17 +35,17 @@ export class BookmarksService {
         });
     }
 
-    getBookmarkById(bookmarkId: string): Observable<Bookmark> {
+    getBookmarkById(bookmarkId: string): Promise<Bookmark> {
         let findBookmark = (bookmarks: Bookmark[]) => {
             return find(bookmarks, {id: parseInt(bookmarkId)});
         };
 
         if (this.bookmarks) {
-            return Observable.of(this.bookmarks)
-                .map(bookmarks => findBookmark(bookmarks));
+            return Promise.resolve(this.bookmarks)
+                .then(bookmarks => findBookmark(bookmarks));
         } else {
             return this.getBookmarks()
-                .map(bookmarks => findBookmark(bookmarks));
+                .then(bookmarks => findBookmark(bookmarks));
         }
     };
 

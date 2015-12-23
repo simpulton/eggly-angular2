@@ -20,7 +20,7 @@ export class Categories {
 
     ngOnInit() {
         this.CategoriesService.getCategories()
-            .subscribe(
+            .then(
                 (data: Category[]) => this.categories = data,
                 error => console.error(error)
             );
