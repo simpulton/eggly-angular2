@@ -1,4 +1,4 @@
-<div *ngFor="#bookmark of bookmarks">
+<div *ngFor="#bookmark of bookmarks | category: CategoriesService.getCurrentCategoryName()">
     <button type="button" class="close">&times;</button>
     <button type="button" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span>
     </button>
