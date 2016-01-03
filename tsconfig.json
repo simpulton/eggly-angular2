@@ -8,13 +8,21 @@
     "sourceMap": true
   },
   "filesGlob": [
-      "src/app/**/*.ts",
-      "!node_modules/**"
+    "typings/main.d.ts",
+    "src/bootstrap.ts",
+    "src/vendor.ts",
+    "src/app/**/*.ts"
   ],
   "files": [
     "typings/main.d.ts",
     "src/bootstrap.ts",
-    "src/vendor.ts"
+    "src/vendor.ts",
+    "src/app/app.ts",
+    "src/app/categories/categories.ts",
+    "src/app/providers/categories-service.ts"
   ],
-  "compileOnSave": false
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": true
+  }
 }
