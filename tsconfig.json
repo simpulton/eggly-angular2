@@ -7,17 +7,12 @@
     "experimentalDecorators": true,
     "sourceMap": true
   },
+  "filesGlob": [
+      "src/app/**/*.ts",
+      "!node_modules/**"
+  ],
   "files": [
     "typings/main.d.ts",
-    "src/app/app.ts",
-    "src/app/providers/categories-service.ts",
-    "src/app/providers/category-model.ts",
-    "src/app/providers/bookmarks-service.ts",
-    "src/app/providers/bookmark-model.ts",
-    "src/app/categories/categories.ts",
-    "src/app/categories/bookmarks/bookmarks.ts",
-    "src/app/categories/bookmarks/create/bookmark-create.ts",
-    "src/app/categories/bookmarks/edit/bookmark-edit.ts",
     "src/bootstrap.ts",
     "src/vendor.ts"
   ],
