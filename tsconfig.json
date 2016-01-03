@@ -10,8 +10,6 @@
   "files": [
     "typings/main.d.ts",
     "src/app/app.ts",
-    "src/app/providers/categories-service.ts",
-    "src/app/providers/category-model.ts",
     "src/app/categories/categories.ts",
     "src/bootstrap.ts",
     "src/vendor.ts"
