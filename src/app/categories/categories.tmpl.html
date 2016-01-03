@@ -1,10 +1,10 @@
 <div class="col-sm-3 col-md-2 sidebar">
-    <a [routerLink]="['/Bookmarks']" class="logo">
+    <a class="logo">
         <img src="img/eggly-logo.png">
     </a>
     <ul class="nav nav-sidebar">
         <li *ngFor="#category of categories">
-            <a [routerLink]="['/Bookmarks', {category: category.name}]">
+            <a>
                 {{category.name}}
             </a>
         </li>
