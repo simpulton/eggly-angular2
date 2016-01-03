@@ -7,7 +7,6 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CategoriesService {
-    private currentCategory: Category;
     private categories: Category[];
     private URLS: {FETCH: string} = {
         FETCH: 'data/categories.json'
@@ -27,32 +26,4 @@ export class CategoriesService {
                 .map(res => this.cacheCategories(res.json()))
                 .toPromise();
     };
-
-    setCurrentCategory(categoryName: string): void {
-        this.getCategoryByName(categoryName)
-            .then((category: Category) => this.currentCategory = category);
-    };
-
-    getCurrentCategory(): Category {
-        return this.currentCategory;
-    };
-
-    getCurrentCategoryName(): string {
-        return this.currentCategory ? this.currentCategory.name : '';
-    };
-
-    getCategoryByName(categoryName: string): Promise<Category> {
-        let findCategory = (categories: Category[]) => {
-            return find(categories, {name: categoryName});
-        };
-
-        if (this.categories) {
-            return Promise.resolve(this.categories)
-                .then((categories: Category[]) => findCategory(categories));
-        } else {
-            return this.getCategories()
-                .then((categories: Category[]) => findCategory(categories));
-        }
-    };
-
 }

@@ -7,7 +7,6 @@ import {Category} from '../providers/category-model';
 @Component({
   selector: 'categories',
   providers: [ CategoriesService ],
-  directives: [ ROUTER_DIRECTIVES ],
   pipes: [],
   template: require('./categories.tmpl.html'),
   styles: [require('./categories.css')]
