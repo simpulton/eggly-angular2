@@ -8,8 +8,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class CategoriesService {
     private currentCategory: Category = {
-        'id': undefined,
-        'name': ''
+        id: 0,
+        name: ''
     };
     private categories: Category[] = undefined;
     private URLS: {FETCH: string} = {

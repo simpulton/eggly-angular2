@@ -11,7 +11,12 @@ import {Bookmark} from '../../../providers/bookmark-model';
 })
 
 export class BookmarkCreate {
-    public newBookmark: Bookmark;
+    public newBookmark: Bookmark = {
+        id: 0,
+        title: '',
+        url: '',
+        category: ''
+    };
 
     constructor(
         public RouteParams: RouteParams,
@@ -20,8 +25,6 @@ export class BookmarkCreate {
     ) {}
 
     ngOnInit() {
-        this.resetForm();
-
         this.BookmarksService.getBookmarks();
     }
 
