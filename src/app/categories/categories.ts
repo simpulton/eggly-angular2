@@ -9,7 +9,7 @@ import {CategoriesService} from '../providers/categories-service';
 })
 
 export class Categories {
-  public categories: Object[] = undefined;
+  categories: Object[] = undefined;
 
   constructor(public CategoriesService: CategoriesService) {};
 
