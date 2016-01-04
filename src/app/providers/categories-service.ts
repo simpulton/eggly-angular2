@@ -16,7 +16,7 @@ export class CategoriesService {
   cacheCategories(result: Category[]): Category[] {
     this.categories = result;
     return this.categories;
-  };
+  }
 
   getCategories(): Promise<Category[]> {
     return this.categories
@@ -24,5 +24,5 @@ export class CategoriesService {
       : this.http.get(this.URLS.FETCH)
         .map(res => this.cacheCategories(res.json()))
         .toPromise();
-  };
+  }
 }
