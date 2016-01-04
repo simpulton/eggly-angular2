@@ -26,4 +26,9 @@ export class BookmarksService {
         this.bookmarks = result;
         return this.bookmarks;
     }
+
+    createBookmark(bookmark: Bookmark): void {
+        bookmark.id = this.bookmarks.length;
+        this.bookmarks.push(bookmark);
+    };
 }

@@ -2,11 +2,13 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Categories} from './categories/categories';
 import {Bookmarks} from './categories/bookmarks/bookmarks';
+import {BookmarkCreate} from './categories/bookmarks/create/bookmark-create';
+import {BookmarksService} from './providers/bookmarks-service';
 
 @Component({
   selector: 'app',
   directives: [ ROUTER_DIRECTIVES, Categories ],
-  pipes: [],
+  providers: [BookmarksService],
   template: `
     <main>
         <div class="container-fluid">
@@ -30,7 +32,8 @@ import {Bookmarks} from './categories/bookmarks/bookmarks';
 })
 
 @RouteConfig([
-  { path: '/', component: Bookmarks, name: 'Bookmarks' }
+  { path: '/', component: Bookmarks, name: 'Bookmarks' },
+  { path: '/:category/bookmarks/create', component: BookmarkCreate, name: 'Create' }
 ])
 
 export class App { }

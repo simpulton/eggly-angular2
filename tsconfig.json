@@ -19,6 +19,7 @@
     "src/vendor.ts",
     "src/app/app.ts",
     "src/app/categories/bookmarks/bookmarks.ts",
+    "src/app/categories/bookmarks/create/bookmark-create.ts",
     "src/app/categories/categories.ts",
     "src/app/categories/category-filter.ts",
     "src/app/providers/bookmark-model.ts",
