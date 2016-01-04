@@ -11,7 +11,7 @@ import {Bookmark} from '../../../providers/bookmark-model';
 })
 
 export class BookmarkCreate {
-  public newBookmark: Bookmark = {
+  newBookmark: Bookmark = {
     id: 0,
     title: '',
     url: '',

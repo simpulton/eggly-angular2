@@ -16,7 +16,7 @@ import {CategoryFilter} from '../category-filter';
 })
 
 export class Bookmarks {
-  public bookmarks: Bookmark[] = undefined;
+  bookmarks: Bookmark[] = undefined;
 
   constructor(
     public BookmarksService: BookmarksService,
@@ -32,7 +32,7 @@ export class Bookmarks {
   getBookmarks(): void {
     this.BookmarksService.getBookmarks()
       .then(
-        data => this.bookmarks = clone(data),
+        (data: Bookmark[]) => this.bookmarks = clone(data),
         error => console.error(error)
       );
   }
