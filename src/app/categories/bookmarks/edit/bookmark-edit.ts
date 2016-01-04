@@ -7,55 +7,55 @@ import {clone} from 'lodash';
 
 @Component({
   selector: 'bookmark-edit',
-  providers: [ FORM_PROVIDERS],
+  providers: [ FORM_PROVIDERS ],
   template: require('./bookmark-edit.tmpl.html')
 })
 
 export class BookmarkEdit {
-    public bookmark: Bookmark = {
-        id: 0,
-        title: '',
-        url: '',
-        category: ''
-    };
-    public editedBookmark: Bookmark = {
-        id: 0,
-        title: '',
-        url: '',
-        category: ''
-    };
+  public bookmark: Bookmark = {
+    id: 0,
+    title: '',
+    url: '',
+    category: ''
+  };
+  public editedBookmark: Bookmark = {
+    id: 0,
+    title: '',
+    url: '',
+    category: ''
+  };
 
-    constructor(
-        public BookmarksService: BookmarksService,
-        private RouteParams: RouteParams,
-        private Router: Router
-    ) {}
+  constructor(
+    public BookmarksService: BookmarksService,
+    private RouteParams: RouteParams,
+    private Router: Router
+  ) { }
 
-    ngOnInit() {
-        this.BookmarksService.getBookmarkById(this.RouteParams.get('bookmarkId'))
-            .then(bookmark => {
-                if (bookmark) {
-                    this.bookmark = bookmark;
-                    this.editedBookmark = clone(this.bookmark);
-                } else {
-                    this.returnToBookmarks();
-                }
-            });
-    }
+  ngOnInit() {
+    this.BookmarksService.getBookmarkById(this.RouteParams.get('bookmarkId'))
+      .then(bookmark => {
+        if (bookmark) {
+          this.bookmark = bookmark;
+          this.editedBookmark = clone(this.bookmark);
+        } else {
+          this.returnToBookmarks();
+        }
+    });
+  }
 
-    returnToBookmarks(): void {
-        this.Router.navigate(['/Bookmarks', {
-            category: this.RouteParams.get('category')
-        }]);
-    }
+  returnToBookmarks(): void {
+    this.Router.navigate(['/Bookmarks', {
+      category: this.RouteParams.get('category')
+    }]);
+  }
 
-    updateBookmark(): void {
-        this.bookmark = clone(this.editedBookmark);
-        this.BookmarksService.updateBookmark(this.editedBookmark);
-        this.returnToBookmarks();
-    }
+  updateBookmark(): void {
+    this.bookmark = clone(this.editedBookmark);
+    this.BookmarksService.updateBookmark(this.editedBookmark);
+    this.returnToBookmarks();
+  }
 
-    cancelEditing(): void {
-        this.returnToBookmarks();
-    }
+  cancelEditing(): void {
+    this.returnToBookmarks();
+  }
 }

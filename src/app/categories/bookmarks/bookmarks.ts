@@ -16,30 +16,30 @@ import {CategoryFilter} from '../category-filter';
 })
 
 export class Bookmarks {
-    public bookmarks: Bookmark[] = undefined;
+  public bookmarks: Bookmark[] = undefined;
 
-    constructor(
-        public BookmarksService: BookmarksService,
-        public CategoriesService: CategoriesService,
-        private RouteParams: RouteParams
-    ) {}
+  constructor(
+    public BookmarksService: BookmarksService,
+    public CategoriesService: CategoriesService,
+    private RouteParams: RouteParams
+  ) { }
 
-    ngOnInit() {
-        this.CategoriesService.setCurrentCategory(this.RouteParams.get('category'));
-        this.getBookmarks();
-    }
+  ngOnInit() {
+    this.CategoriesService.setCurrentCategory(this.RouteParams.get('category'));
+    this.getBookmarks();
+  }
 
-    getBookmarks(): void {
-        this.BookmarksService.getBookmarks()
-            .then(
-                data => this.bookmarks = clone(data),
-                error => console.error(error)
-            );
-    }
+  getBookmarks(): void {
+    this.BookmarksService.getBookmarks()
+      .then(
+        data => this.bookmarks = clone(data),
+        error => console.error(error)
+      );
+  }
 
-    deleteBookmark(bookmark): void {
-        this.BookmarksService.deleteBookmark(bookmark);
+  deleteBookmark(bookmark): void {
+    this.BookmarksService.deleteBookmark(bookmark);
 
-        this.getBookmarks();
-    }
+    this.getBookmarks();
+  }
 }

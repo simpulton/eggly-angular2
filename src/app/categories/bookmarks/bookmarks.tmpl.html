@@ -1,14 +1,14 @@
 <div *ngFor="#bookmark of bookmarks | category: CategoriesService.getCurrentCategoryName()">
-    <button type="button" class="close" (click)="deleteBookmark(bookmark)">&times;</button>
-    <button type="button" class="btn btn-link" [routerLink]="[ '/Edit', {category: bookmark.category, bookmarkId: bookmark.id} ]">
-        <span class="glyphicon glyphicon-pencil"></span>
-    </button>
-    <a [href]="bookmark.url" target="_blank">{{ bookmark.title }}</a>
+  <button type="button" class="close" (click)="deleteBookmark(bookmark)">&times;</button>
+  <button type="button" class="btn btn-link" [routerLink]="[ '/Edit', {category: bookmark.category, bookmarkId: bookmark.id} ]">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </button>
+  <a [href]="bookmark.url" target="_blank">{{ bookmark.title }}</a>
 </div>
-<hr *ngIf="CategoriesService.getCurrentCategory()"/>
+<hr *ngIf="CategoriesService.getCurrentCategory()" />
 <div *ngIf="CategoriesService.getCurrentCategory()">
-    <button type="button" class="btn btn-link" [routerLink]="['/Create', {category: RouteParams.get('category')}]">
-        <span class="glyphicon glyphicon-plus"></span>
-        Create Bookmark
-    </button>
+  <button type="button" class="btn btn-link" [routerLink]="[ '/Create', {category: RouteParams.get('category')} ]">
+    <span class="glyphicon glyphicon-plus"></span>
+    Create Bookmark
+  </button>
 </div>

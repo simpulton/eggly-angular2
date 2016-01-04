@@ -3,13 +3,8 @@
 
 # TEAM
 
-  <name> -- <role> -- <twitter>
-
-# THANKS
-
-  <name>
-  PatrickJS -- @gdi2290
-  AngularClass -- @AngularClass
+  Luke Ruebbelke -- Developer -- @simpulton
+  Jonathan Garvey -- Developer -- @jdagarvey
 
 # TECHNOLOGY COLOPHON
 
