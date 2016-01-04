@@ -29,20 +29,20 @@ export class CategoriesService {
       : this.http.get(this.URLS.FETCH)
         .map(res => this.cacheCategories(res.json()))
         .toPromise();
-  };
+  }
 
   setCurrentCategory(categoryName: string): void {
     this.getCategoryByName(categoryName)
       .then((category: Category) => this.currentCategory = category);
-  };
+  }
 
   getCurrentCategory(): Category {
     return this.currentCategory;
-  };
+  }
 
   getCurrentCategoryName(): string {
     return this.currentCategory ? this.currentCategory.name : '';
-  };
+  }
 
   getCategoryByName(categoryName: string): Promise<Category> {
     let findCategory = (categories: Category[]) => {
@@ -56,5 +56,5 @@ export class CategoriesService {
       return this.getCategories()
         .then((categories: Category[]) => findCategory(categories));
     }
-  };
+  }
 }
