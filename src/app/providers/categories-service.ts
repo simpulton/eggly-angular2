@@ -5,23 +5,23 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CategoriesService {
-    private categories: Object[] = undefined;
-    private URLS: {FETCH: string} = {
-        FETCH: 'data/categories.json'
-    };
+  private categories: Object[] = undefined;
+  private URLS: { FETCH: string } = {
+    FETCH: 'data/categories.json'
+  };
 
-    constructor(public http: Http) {};
+  constructor(public http: Http) { };
 
-    cacheCategories(result: Object[]): Object[] {
-        this.categories = result;
-        return this.categories;
-    };
+  cacheCategories(result: Object[]): Object[] {
+    this.categories = result;
+    return this.categories;
+  };
 
-    getCategories(): Promise<Object[]> {
-        return this.categories
-            ? Promise.resolve(this.categories)
-            : this.http.get(this.URLS.FETCH)
-                .map(res => this.cacheCategories(res.json()))
-                .toPromise();
-    };
+  getCategories(): Promise<Object[]> {
+    return this.categories
+      ? Promise.resolve(this.categories)
+      : this.http.get(this.URLS.FETCH)
+        .map(res => this.cacheCategories(res.json()))
+        .toPromise();
+  };
 }
