@@ -6,7 +6,6 @@ import {Bookmarks} from './categories/bookmarks/bookmarks';
 @Component({
   selector: 'app',
   directives: [ ROUTER_DIRECTIVES, Categories ],
-  pipes: [],
   template: `
     <main>
         <div class="container-fluid">
@@ -19,14 +18,12 @@ import {Bookmarks} from './categories/bookmarks/bookmarks';
         </div>
     </main>
   `,
-  styles: [
-      `
-          .main {
-            padding-top: 96px;
-            padding-left: 24px;
-          }
-      `
-  ]
+  styles: [`
+      .main {
+        padding-top: 96px;
+        padding-left: 24px;
+      }
+  `]
 })
 
 @RouteConfig([
