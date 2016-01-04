@@ -7,9 +7,9 @@ import {CategoryFilter} from '../category-filter';
 
 @Component({
   selector: 'bookmarks',
-  providers: [CategoriesService],
+  providers: [ CategoriesService ],
   directives: [ ROUTER_DIRECTIVES ],
-  pipes: [CategoryFilter],
+  pipes: [ CategoryFilter ],
   template: require('./bookmarks.tmpl.html')
 })
 
