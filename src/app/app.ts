@@ -7,8 +7,8 @@ import {BookmarksService} from './providers/bookmarks-service';
 
 @Component({
   selector: 'app',
+  providers: [ BookmarksService ],
   directives: [ ROUTER_DIRECTIVES, Categories ],
-  providers: [BookmarksService],
   template: `
     <main>
         <div class="container-fluid">
@@ -21,14 +21,12 @@ import {BookmarksService} from './providers/bookmarks-service';
         </div>
     </main>
   `,
-  styles: [
-      `
-          .main {
-            padding-top: 96px;
-            padding-left: 24px;
-          }
-      `
-  ]
+  styles: [`
+      .main {
+        padding-top: 96px;
+        padding-left: 24px;
+      }
+  `]
 })
 
 @RouteConfig([
