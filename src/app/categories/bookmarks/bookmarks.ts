@@ -36,4 +36,10 @@ export class Bookmarks {
                 error => console.error(error)
             );
     }
+
+    deleteBookmark(bookmark): void {
+        this.BookmarksService.deleteBookmark(bookmark);
+
+        this.getBookmarks();
+    }
 }

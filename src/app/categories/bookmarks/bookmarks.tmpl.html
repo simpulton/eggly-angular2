@@ -1,5 +1,5 @@
 <div *ngFor="#bookmark of bookmarks | category: CategoriesService.getCurrentCategoryName()">
-    <button type="button" class="close">&times;</button>
+    <button type="button" class="close" (click)="deleteBookmark(bookmark)">&times;</button>
     <button type="button" class="btn btn-link" [routerLink]="['/Edit', {category: bookmark.category, bookmarkId: bookmark.id}]">
         <span class="glyphicon glyphicon-pencil"></span>
     </button>

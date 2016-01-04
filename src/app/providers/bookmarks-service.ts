@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {Bookmark} from './bookmark-model';
-import {find, findIndex} from 'lodash';
+import {find, findIndex, remove} from 'lodash';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -59,5 +59,11 @@ export class BookmarksService {
         });
 
         this.bookmarks[index] = bookmark;
-    };
+    }
+
+    deleteBookmark(bookmark: Bookmark): void {
+        remove(this.bookmarks, function (b: Bookmark) {
+            return b.id === bookmark.id;
+        });
+    }
 }
