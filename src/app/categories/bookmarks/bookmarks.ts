@@ -9,14 +9,14 @@ import {CategoryFilter} from '../category-filter';
 
 @Component({
   selector: 'bookmarks',
-  providers: [CategoriesService],
+  providers: [ CategoriesService ],
   directives: [ ROUTER_DIRECTIVES ],
-  pipes: [CategoryFilter],
+  pipes: [ CategoryFilter ],
   template: require('./bookmarks.tmpl.html')
 })
 
 export class Bookmarks {
-    public bookmarks: Bookmark[];
+    public bookmarks: Bookmark[] = undefined;
 
     constructor(
         public BookmarksService: BookmarksService,

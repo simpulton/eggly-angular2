@@ -8,14 +8,22 @@ import {clone} from 'lodash';
 @Component({
   selector: 'bookmark-edit',
   providers: [ FORM_PROVIDERS],
-  directives: [ ],
-  pipes: [],
   template: require('./bookmark-edit.tmpl.html')
 })
 
 export class BookmarkEdit {
-    public bookmark: Bookmark;
-    public editedBookmark: Bookmark;
+    public bookmark: Bookmark = {
+        id: 0,
+        title: '',
+        url: '',
+        category: ''
+    };
+    public editedBookmark: Bookmark = {
+        id: 0,
+        title: '',
+        url: '',
+        category: ''
+    };
 
     constructor(
         public BookmarksService: BookmarksService,
@@ -24,13 +32,6 @@ export class BookmarkEdit {
     ) {}
 
     ngOnInit() {
-        this.bookmark = this.editedBookmark = {
-            id: 0,
-            title: '',
-            url: '',
-            category: ''
-        };
-
         this.BookmarksService.getBookmarkById(this.RouteParams.get('bookmarkId'))
             .then(bookmark => {
                 if (bookmark) {

@@ -9,11 +9,11 @@ import {Category} from '../providers/category-model';
   providers: [ CategoriesService ],
   directives: [ ROUTER_DIRECTIVES ],
   template: require('./categories.tmpl.html'),
-  styles: [require('./categories.css')]
+  styles: [ require('./categories.css') ]
 })
 
 export class Categories {
-    public categories: Category[];
+    public categories: Category[] = undefined;
 
     constructor(public CategoriesService: CategoriesService) {};
 

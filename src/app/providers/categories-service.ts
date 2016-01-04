@@ -7,8 +7,11 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CategoriesService {
-    private currentCategory: Category;
-    private categories: Category[];
+    private currentCategory: Category = {
+        id: 0,
+        name: ''
+    };
+    private categories: Category[] = undefined;
     private URLS: {FETCH: string} = {
         FETCH: 'data/categories.json'
     };
