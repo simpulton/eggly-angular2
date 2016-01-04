@@ -1,12 +1,11 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
-import {find} from 'lodash';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CategoriesService {
-    private categories: Object[];
+    private categories: Object[] = undefined;
     private URLS: {FETCH: string} = {
         FETCH: 'data/categories.json'
     };

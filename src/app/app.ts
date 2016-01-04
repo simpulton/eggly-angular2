@@ -4,7 +4,6 @@ import {Categories} from './categories/categories';
 @Component({
   selector: 'app',
   directives: [ Categories ],
-  pipes: [],
   template: `
     <main>
         <div class="container-fluid">
