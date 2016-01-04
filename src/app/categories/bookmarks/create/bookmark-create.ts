@@ -11,44 +11,44 @@ import {Bookmark} from '../../../providers/bookmark-model';
 })
 
 export class BookmarkCreate {
-    public newBookmark: Bookmark = {
-        id: 0,
-        title: '',
-        url: '',
-        category: ''
+  public newBookmark: Bookmark = {
+    id: 0,
+    title: '',
+    url: '',
+    category: this.RouteParams.get('category')
+  };
+
+  constructor(
+    public RouteParams: RouteParams,
+    public Router: Router,
+    public BookmarksService: BookmarksService
+  ) { }
+
+  ngOnInit() {
+    this.BookmarksService.getBookmarks();
+  }
+
+  returnToBookmarks(): void {
+    this.Router.navigate(['Bookmarks', {
+      category: this.RouteParams.get('category')
+    }]);
+  }
+
+  cancelCreating(): void {
+    this.returnToBookmarks();
+  }
+
+  createBookmark(): void {
+    this.BookmarksService.createBookmark(this.newBookmark);
+    this.returnToBookmarks();
+  }
+
+  resetForm(): void {
+    this.newBookmark = {
+      id: 0,
+      title: '',
+      url: '',
+      category: this.RouteParams.get('category')
     };
-
-    constructor(
-        public RouteParams: RouteParams,
-        public Router: Router,
-        public BookmarksService: BookmarksService
-    ) {}
-
-    ngOnInit() {
-        this.BookmarksService.getBookmarks();
-    }
-
-    returnToBookmarks(): void {
-        this.Router.navigate(['Bookmarks', {
-            category: this.RouteParams.get('category')
-        }]);
-    }
-
-    cancelCreating(): void {
-        this.returnToBookmarks();
-    }
-
-    createBookmark(): void {
-        this.BookmarksService.createBookmark(this.newBookmark);
-        this.returnToBookmarks();
-    }
-
-    resetForm(): void {
-        this.newBookmark = {
-            id: 0,
-            title: '',
-            url: '',
-            category: this.RouteParams.get('category')
-        };
-    }
+  }
 }

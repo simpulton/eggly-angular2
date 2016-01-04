@@ -1,14 +1,16 @@
-<h4>Create a bookmark in <span class="text-muted">{{ RouteParams.get('category') }}</span></h4>
+<h4>Create a bookmark in
+  <span class="text-muted">{{ RouteParams.get('category') }}</span>
+</h4>
 
 <form class="create-form" role="form" (ngSubmit)="createBookmark(newBookmark)" novalidate>
-    <div class="form-group">
-        <label for="newBookmarkTitle">Bookmark Title</label>
-        <input type="text" class="form-control" id="newBookmarkTitle" [(ngModel)]="newBookmark.title" placeholder="Enter title">
-    </div>
-    <div class="form-group">
-        <label for="newBookmarkURL">Bookmark URL</label>
-        <input type="text" class="form-control" id="newBookmarkURL" [(ngModel)]="newBookmark.url" placeholder="Enter URL">
-    </div>
-    <button type="submit" class="btn btn-info btn-lg">Create</button>
-    <button type="button" class="btn btn-default btn-lg pull-right" (click)="cancelCreating()">Cancel</button>
+  <div class="form-group">
+    <label for="newBookmarkTitle">Bookmark Title</label>
+    <input type="text" class="form-control" id="newBookmarkTitle" [(ngModel)]="newBookmark.title" placeholder="Enter title">
+  </div>
+  <div class="form-group">
+    <label for="newBookmarkURL">Bookmark URL</label>
+    <input type="text" class="form-control" id="newBookmarkURL" [(ngModel)]="newBookmark.url" placeholder="Enter URL">
+  </div>
+  <button type="submit" class="btn btn-info btn-lg">Create</button>
+  <button type="button" class="btn btn-default btn-lg pull-right" (click)="cancelCreating()">Cancel</button>
 </form>
