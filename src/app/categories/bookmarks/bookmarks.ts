@@ -15,7 +15,7 @@ import {CategoryFilter} from '../category-filter';
 })
 
 export class Bookmarks {
-    public bookmarks: Bookmark[];
+    public bookmarks: Bookmark[] = undefined;
 
     constructor(
         public BookmarksService: BookmarksService,
