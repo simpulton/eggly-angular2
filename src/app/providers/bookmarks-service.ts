@@ -52,7 +52,7 @@ export class BookmarksService {
   createBookmark(bookmark: Bookmark): void {
     bookmark.id = this.bookmarks.length;
     this.bookmarks.push(bookmark);
-  };
+  }
 
   updateBookmark(bookmark: Bookmark): void {
     var index = findIndex(this.bookmarks, function(b: Bookmark) {
@@ -60,5 +60,5 @@ export class BookmarksService {
     });
 
     this.bookmarks[index] = bookmark;
-  };
+  }
 }
