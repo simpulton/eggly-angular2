@@ -1,19 +1,16 @@
 import {Component} from 'angular2/core';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
-import {Http} from 'angular2/http';
 import {CategoriesService} from '../providers/categories-service';
 import {Category} from '../providers/category-model';
 
 @Component({
   selector: 'categories',
   providers: [ CategoriesService ],
-  pipes: [],
   template: require('./categories.tmpl.html'),
-  styles: [require('./categories.css')]
+  styles: [ require('./categories.css') ]
 })
 
 export class Categories {
-    public categories: Category[];
+    public categories: Category[] = undefined;
 
     constructor(public CategoriesService: CategoriesService) {};
 

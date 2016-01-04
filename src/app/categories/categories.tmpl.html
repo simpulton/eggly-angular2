@@ -3,9 +3,9 @@
         <img src="img/eggly-logo.png">
     </a>
     <ul class="nav nav-sidebar">
-        <li *ngFor="#category of categories" ng-class="{'active':isCurrentCategory(category)}">
+        <li *ngFor="#category of categories">
             <a>
-                {{category.name}}
+                {{ category.name }}
             </a>
         </li>
     </ul>
