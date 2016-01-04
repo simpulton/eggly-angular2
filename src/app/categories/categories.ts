@@ -12,15 +12,15 @@ import {Category} from '../providers/category-model';
 })
 
 export class Categories {
-    public categories: Category[] = undefined;
+  public categories: Category[] = undefined;
 
-    constructor(public CategoriesService: CategoriesService) {};
+  constructor(public CategoriesService: CategoriesService) {};
 
-    ngOnInit() {
-        this.CategoriesService.getCategories()
-            .then(
-                (data: Category[]) => this.categories = data,
-                error => console.error(error)
-            );
-    }
+  ngOnInit() {
+    this.CategoriesService.getCategories()
+      .then(
+        (data: Category[]) => this.categories = data,
+        error => console.error(error)
+      );
+  }
 }
