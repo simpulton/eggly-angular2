@@ -30,5 +30,5 @@ export class BookmarksService {
   createBookmark(bookmark: Bookmark): void {
     bookmark.id = this.bookmarks.length;
     this.bookmarks.push(bookmark);
-  };
+  }
 }

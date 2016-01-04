@@ -12,7 +12,7 @@ import {Category} from '../providers/category-model';
 })
 
 export class Categories {
-  public categories: Category[] = undefined;
+  categories: Category[] = undefined;
 
   constructor(public CategoriesService: CategoriesService) {};
 
