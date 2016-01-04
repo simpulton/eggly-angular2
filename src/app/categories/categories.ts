@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import {Http} from 'angular2/http';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {CategoriesService} from '../providers/categories-service';
 import {Category} from '../providers/category-model';
@@ -9,11 +8,11 @@ import {Category} from '../providers/category-model';
   providers: [ CategoriesService ],
   directives: [ ROUTER_DIRECTIVES ],
   template: require('./categories.tmpl.html'),
-  styles: [require('./categories.css')]
+  styles: [ require('./categories.css') ]
 })
 
 export class Categories {
-    public categories: Category[];
+    public categories: Category[] = undefined;
 
     constructor(public CategoriesService: CategoriesService) {};
 

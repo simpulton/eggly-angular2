@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BookmarksService {
-    private bookmarks: Bookmark[];
+    private bookmarks: Bookmark[] = undefined;
     private URLS: {FETCH: string} = {
         FETCH: 'data/bookmarks.json'
     };
