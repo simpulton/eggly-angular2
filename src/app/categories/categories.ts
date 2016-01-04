@@ -3,7 +3,7 @@ import {Component} from 'angular2/core';
 @Component({
   selector: 'categories',
   template: require('./categories.tmpl.html'),
-  styles: [require('./categories.css')]
+  styles: [ require('./categories.css') ]
 })
 
 export class Categories {
