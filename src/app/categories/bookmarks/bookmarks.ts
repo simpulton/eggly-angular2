@@ -2,16 +2,15 @@ import {Component} from 'angular2/core';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {clone} from 'lodash';
 import {BookmarksService} from '../../providers/bookmarks-service';
-import {Bookmark} from '../../providers/bookmark-model';
 import {CategoriesService} from '../../providers/categories-service';
-import {Category} from '../../providers/category-model';
+import {Bookmark} from '../../providers/bookmark-model';
 import {CategoryFilter} from '../category-filter';
 
 @Component({
   selector: 'bookmarks',
-  providers: [BookmarksService, CategoriesService],
   directives: [ ROUTER_DIRECTIVES ],
-  pipes: [CategoryFilter],
+  providers: [ CategoriesService ],
+  pipes: [ CategoryFilter ],
   template: require('./bookmarks.tmpl.html')
 })
 

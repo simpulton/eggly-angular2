@@ -2,11 +2,12 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Categories} from './categories/categories';
 import {Bookmarks} from './categories/bookmarks/bookmarks';
+import {BookmarksService} from './providers/bookmarks-service';
 
 @Component({
   selector: 'app',
+  providers: [ BookmarksService ],
   directives: [ ROUTER_DIRECTIVES, Categories ],
-  pipes: [],
   template: `
     <main>
         <div class="container-fluid">
@@ -19,14 +20,12 @@ import {Bookmarks} from './categories/bookmarks/bookmarks';
         </div>
     </main>
   `,
-  styles: [
-      `
-          .main {
-            padding-top: 96px;
-            padding-left: 24px;
-          }
-      `
-  ]
+  styles: [`
+      .main {
+        padding-top: 96px;
+        padding-left: 24px;
+      }
+  `]
 })
 
 @RouteConfig([
