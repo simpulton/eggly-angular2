@@ -4,7 +4,6 @@ import {Categories} from './categories/categories';
 @Component({
   selector: 'app',
   directives: [ Categories ],
-  pipes: [],
   template: `
     <main>
         <div class="container-fluid">
@@ -14,14 +13,12 @@ import {Categories} from './categories/categories';
         </div>
     </main>
   `,
-  styles: [
-      `
-          .main {
-            padding-top: 96px;
-            padding-left: 24px;
-          }
-      `
-  ]
+  styles: [`
+    .main {
+        padding-top: 96px;
+        padding-left: 24px;
+    }
+`]
 })
 
 export class App { }
