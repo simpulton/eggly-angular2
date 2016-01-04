@@ -14,7 +14,7 @@ import {CategoryFilter} from '../category-filter';
 })
 
 export class Bookmarks {
-  public bookmarks: Bookmark[] = [
+  bookmarks: Bookmark[] = [
     { 'id': 0, 'title': 'AngularJS', 'url': 'http://angularjs.org', 'category': 'Development' },
     { 'id': 1, 'title': 'Egghead.io', 'url': 'http://egghead.io', 'category': 'Development' },
     { 'id': 2, 'title': 'A List Apart', 'url': 'http://alistapart.com/', 'category': 'Design' },

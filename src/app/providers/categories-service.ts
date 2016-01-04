@@ -21,7 +21,7 @@ export class CategoriesService {
   cacheCategories(result: Category[]): Category[] {
     this.categories = result;
     return this.categories;
-  };
+  }
 
   getCategories(): Promise<Category[]> {
     return this.categories
