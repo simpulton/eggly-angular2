@@ -14,8 +14,8 @@ export class CategoriesService {
   constructor(public http: Http) { };
 
   cacheCategories(result: Category[]): Category[] {
-      this.categories = result;
-      return this.categories;
+    this.categories = result;
+    return this.categories;
   }
 
   getCategories(): Promise<Category[]> {
