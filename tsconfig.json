@@ -19,8 +19,6 @@
     "src/vendor.ts",
     "src/app/app.ts",
     "src/app/categories/bookmarks/bookmarks.ts",
-    "src/app/categories/bookmarks/create/bookmark-create.ts",
-    "src/app/categories/bookmarks/edit/bookmark-edit.ts",
     "src/app/categories/bookmarks/save/bookmark-save.ts",
     "src/app/categories/categories.ts",
     "src/app/categories/category-filter.ts",
