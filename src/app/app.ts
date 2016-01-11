@@ -4,7 +4,8 @@ import {Categories} from './categories/categories';
 import {Bookmarks} from './categories/bookmarks/bookmarks';
 import {BookmarkCreate} from './categories/bookmarks/create/bookmark-create';
 import {BookmarkEdit} from './categories/bookmarks/edit/bookmark-edit';
-import {BookmarksService} from './providers/bookmarks-service';
+import {BookmarkSave} from './categories/bookmarks/save/bookmark-save';
+import {BookmarksService} from './common/services/bookmarks-service';
 
 @Component({
   selector: 'app',
@@ -35,8 +36,8 @@ import {BookmarksService} from './providers/bookmarks-service';
 
 @RouteConfig([
   { path: '/', component: Bookmarks, name: 'Bookmarks' },
-  { path: '/:category/bookmarks/create', component: BookmarkCreate, name: 'Create' },
-  { path: '/:category/bookmarks/:bookmarkId/edit', component: BookmarkEdit, name: 'Edit' }
+  { path: '/:category/bookmarks/create', component: BookmarkSave, name: 'Create' },
+  { path: '/:category/bookmarks/:bookmarkId/edit', component: BookmarkSave, name: 'Edit' }
 ])
 
 export class App { }

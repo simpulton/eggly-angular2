@@ -1,10 +1,10 @@
 import {Component} from 'angular2/core';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {clone} from 'lodash';
-import {BookmarksService} from '../../providers/bookmarks-service';
-import {CategoriesService} from '../../providers/categories-service';
-import {Category} from '../../providers/category-model';
-import {Bookmark} from '../../providers/bookmark-model';
+import {BookmarksService} from '../../common/services/bookmarks-service';
+import {CategoriesService} from '../../common/services/categories-service';
+import {Category} from '../../common/models/category-model';
+import {Bookmark} from '../../common/models/bookmark-model';
 import {CategoryFilter} from '../category-filter';
 
 @Component({
@@ -16,32 +16,27 @@ import {CategoryFilter} from '../category-filter';
 })
 
 export class Bookmarks {
-    public bookmarks: Bookmark[];
-    public category: Category[];
+    bookmarks: Bookmark[];
+    categoryName: string = '';
 
     constructor(
-        public BookmarksService: BookmarksService,
-        public CategoriesService: CategoriesService,
-        private RouteParams: RouteParams
+        private bookmarksService: BookmarksService,
+        private categoriesService: CategoriesService,
+        private routeParams: RouteParams
     ) {}
 
     ngOnInit() {
-        this.CategoriesService.setCurrentCategory(this.RouteParams.get('category'));
+        this.categoryName = this.routeParams.get('category');
 
-        this.getBookmarks();
-    }
+        this.bookmarksService.bookmarks$
+          .subscribe(updatedBookmarks => {
+              this.bookmarks = updatedBookmarks;
+          });
 
-    getBookmarks(): void {
-        this.BookmarksService.getBookmarks()
-            .then(
-                data => this.bookmarks = clone(data),
-                error => console.error(error)
-            );
+        this.bookmarksService.getBookmarks();
     }
 
     deleteBookmark(bookmark): void {
-        this.BookmarksService.deleteBookmark(bookmark);
-
-        this.getBookmarks();
+        this.bookmarksService.deleteBookmark(bookmark);
     }
 }

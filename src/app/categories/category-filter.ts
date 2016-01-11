@@ -1,5 +1,5 @@
 import {Pipe} from 'angular2/core';
-import {Bookmark} from '../providers/bookmark-model';
+import {Bookmark} from '../common/models/bookmark-model';
 
 @Pipe({
     name: 'category'

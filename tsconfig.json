@@ -21,12 +21,13 @@
     "src/app/categories/bookmarks/bookmarks.ts",
     "src/app/categories/bookmarks/create/bookmark-create.ts",
     "src/app/categories/bookmarks/edit/bookmark-edit.ts",
+    "src/app/categories/bookmarks/save/bookmark-save.ts",
     "src/app/categories/categories.ts",
     "src/app/categories/category-filter.ts",
-    "src/app/providers/bookmark-model.ts",
-    "src/app/providers/bookmarks-service.ts",
-    "src/app/providers/categories-service.ts",
-    "src/app/providers/category-model.ts"
+    "src/app/common/models/bookmark-model.ts",
+    "src/app/common/models/category-model.ts",
+    "src/app/common/services/bookmarks-service.ts",
+    "src/app/common/services/categories-service.ts"
   ],
   "compileOnSave": false,
   "atom": {

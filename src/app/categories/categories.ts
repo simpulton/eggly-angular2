@@ -1,28 +1,39 @@
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http} from 'angular2/http';
-import {CategoriesService} from '../providers/categories-service';
-import {Category} from '../providers/category-model';
+import {CategoriesService} from '../common/services/categories-service';
+import {Category} from '../common/models/category-model';
 
 @Component({
   selector: 'categories',
   providers: [ CategoriesService ],
   directives: [ ROUTER_DIRECTIVES ],
-  pipes: [],
-  template: require('./categories.tmpl.html'),
+  template: `<div class="col-sm-3 col-md-2 sidebar">
+      <a [routerLink]="['/Bookmarks']" class="logo">
+          <img src="img/eggly-logo.png">
+      </a>
+      <ul class="nav nav-sidebar">
+          <li *ngFor="#category of categories">
+              <a [routerLink]="['/Bookmarks', {category: category.name}]">
+                  {{category.name}}
+              </a>
+          </li>
+      </ul>
+  </div>
+  `,
   styles: [require('./categories.css')]
 })
 
 export class Categories {
     public categories: Category[];
 
-    constructor(public CategoriesService: CategoriesService) {};
+    constructor(private categoriesService: CategoriesService) {};
 
     ngOnInit() {
-        this.CategoriesService.getCategories()
-            .then(
-                (data: Category[]) => this.categories = data,
-                error => console.error(error)
-            );
+        this.categoriesService.categories$.subscribe(updatedCategories => {
+            this.categories = updatedCategories;
+        });
+
+        this.categoriesService.getCategories();
     }
 }
