@@ -2,8 +2,6 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Categories} from './categories/categories';
 import {Bookmarks} from './categories/bookmarks/bookmarks';
-import {BookmarkCreate} from './categories/bookmarks/create/bookmark-create';
-import {BookmarkEdit} from './categories/bookmarks/edit/bookmark-edit';
 import {BookmarkSave} from './categories/bookmarks/save/bookmark-save';
 import {BookmarksService} from './common/services/bookmarks-service';
 

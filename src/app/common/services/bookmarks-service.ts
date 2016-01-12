@@ -29,6 +29,14 @@ export class BookmarksService {
     }
 
     getBookmarks() {
+        if (this.dataStore.bookmarks.length !== 0) {
+            this.bookmarksObserver.next(this.dataStore.bookmarks);
+        } else {
+            this.getFreshBookmarks();
+        }
+    };
+
+    getFreshBookmarks() {
         this.http.get(this.URLS.FETCH)
             .map(response => response.json())
             .subscribe(data => {
@@ -46,6 +54,7 @@ export class BookmarksService {
     createBookmark(bookmark: Bookmark): void {
         bookmark.id = this.generateUUID();
         this.dataStore.bookmarks.push(bookmark);
+
         this.bookmarksObserver.next(this.dataStore.bookmarks);
     };
 

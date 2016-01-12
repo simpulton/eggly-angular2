@@ -13,12 +13,7 @@ import {clone} from 'lodash';
 
 export class BookmarkSave {
     bookmark: Bookmark;
-    editedBookmark: Bookmark = {
-        id: null,
-        title: '',
-        url: '',
-        category: ''
-    };
+    editedBookmark: Bookmark;
 
     constructor(
         private bookmarksService: BookmarksService,
@@ -28,6 +23,15 @@ export class BookmarkSave {
 
     ngOnInit() {
         let id = this.routeParams.get('bookmarkId');
+        let category = this.routeParams.get('category');
+
+        this.editedBookmark = {
+            id: null,
+            title: '',
+            url: '',
+            category: category
+        };
+
         this.bookmark = this.bookmarksService.getBookmarkById(id);
         if (this.bookmark) this.editedBookmark = clone(this.bookmark);
     }
