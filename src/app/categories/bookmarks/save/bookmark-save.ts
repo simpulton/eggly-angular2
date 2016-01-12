@@ -12,8 +12,14 @@ import {clone} from 'lodash';
 })
 
 export class BookmarkSave {
+    bookmarks: Bookmark[];
     bookmark: Bookmark;
-    editedBookmark: Bookmark;
+    editedBookmark: Bookmark = {
+        id: null,
+        title: '',
+        url: '',
+        category: null
+    };
 
     constructor(
         private bookmarksService: BookmarksService,
@@ -22,17 +28,23 @@ export class BookmarkSave {
     ) {}
 
     ngOnInit() {
-        let id = this.routeParams.get('bookmarkId');
-        let category = this.routeParams.get('category');
+        this.bookmarksService.bookmarks$
+          .subscribe(updatedBookmarks => {
+              let id = this.routeParams.get('bookmarkId');
+              this.bookmarks = updatedBookmarks;
+              this.initBookmarks(updatedBookmarks, id);
+              this.initEditedBookmark();
+          });
 
-        this.editedBookmark = {
-            id: null,
-            title: '',
-            url: '',
-            category: category
-        };
+        this.bookmarksService.getBookmarks();
+    }
 
-        this.bookmark = this.bookmarksService.getBookmarkById(id);
+    initEditedBookmark(): void {
+        this.editedBookmark.category = this.routeParams.get('category');
+    }
+
+    initBookmarks(bookmarks, id): void {
+        this.bookmark = this.bookmarksService.getBookmarkById(this.bookmarks, id);
         if (this.bookmark) this.editedBookmark = clone(this.bookmark);
     }
 
@@ -44,9 +56,9 @@ export class BookmarkSave {
 
     saveBookmark(): void {
         if (this.editedBookmark.id) {
-            this.bookmarksService.updateBookmark(this.editedBookmark);
+            this.bookmarksService.updateBookmark(this.bookmarks, this.editedBookmark);
         } else {
-            this.bookmarksService.createBookmark(this.editedBookmark);
+            this.bookmarksService.createBookmark(this.bookmarks, this.editedBookmark);
         }
         this.returnToBookmarks();
     }

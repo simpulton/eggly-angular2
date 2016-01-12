@@ -37,6 +37,6 @@ export class Bookmarks {
     }
 
     deleteBookmark(bookmark): void {
-        this.bookmarksService.deleteBookmark(bookmark);
+        this.bookmarksService.deleteBookmark(this.bookmarks, bookmark);
     }
 }

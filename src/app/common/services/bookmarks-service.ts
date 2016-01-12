@@ -29,49 +29,47 @@ export class BookmarksService {
     }
 
     getBookmarks() {
-        if (this.dataStore.bookmarks.length !== 0) {
-            this.bookmarksObserver.next(this.dataStore.bookmarks);
-        } else {
-            this.getFreshBookmarks();
-        }
+        return (this.dataStore.bookmarks.length !== 0) ?
+          this.bookmarksObserver.next(this.dataStore.bookmarks) :
+          this.getFreshBookmarks();
     };
 
     getFreshBookmarks() {
-        this.http.get(this.URLS.FETCH)
+        return this.http.get(this.URLS.FETCH)
             .map(response => response.json())
             .subscribe(data => {
               this.dataStore.bookmarks = data;
               this.bookmarksObserver.next(this.dataStore.bookmarks);
-            }, error => console.log('Could not load categories'));
+            }, error => console.log('Could not load bookmarks'));
     };
 
-    getBookmarkById(bookmarkId: string): Bookmark {
-        return find(this.dataStore.bookmarks, function (bookmark: Bookmark) {
-            return bookmark.id === bookmarkId;
-        });
+    getBookmarkById(bookmarks: Bookmark[], bookmarkId: string): Bookmark {
+        return find(bookmarks, bookmark => bookmark.id === bookmarkId);
     };
 
-    createBookmark(bookmark: Bookmark): void {
-        bookmark.id = this.generateUUID();
-        this.dataStore.bookmarks.push(bookmark);
+    createBookmark(bookmarks: Bookmark[], bookmark: Bookmark): any {
+        bookmark.id = this.generateUUID(); // NOTE: Simulating server
 
-        this.bookmarksObserver.next(this.dataStore.bookmarks);
+        return this.bookmarksObserver.next([...bookmarks, bookmark]);
     };
 
-    updateBookmark(bookmark: Bookmark): void {
-        this.dataStore.bookmarks.forEach((b, i) => {
-            if (b.id === bookmark.id) { this.dataStore.bookmarks[i] = bookmark; }
-        });
+    updateBookmark(bookmarks: Bookmark[], bookmark: Bookmark): any {
+        let index = findIndex(bookmarks, (b) => b.id === bookmark.id);
 
-        this.bookmarksObserver.next(this.dataStore.bookmarks);
+        return this.bookmarksObserver.next([
+          ...bookmarks.slice(0, index),
+          bookmark,
+          ...bookmarks.slice(index + 1)
+        ]);
     };
 
-    deleteBookmark(bookmark: Bookmark): void {
-        this.dataStore.bookmarks.forEach((b, index) => {
-            if (b.id === bookmark.id) { this.dataStore.bookmarks.splice(index, 1); }
-        });
+    deleteBookmark(bookmarks: Bookmark[], bookmark: Bookmark): any {
+        let index = findIndex(bookmarks, (b) => b.id === bookmark.id);
 
-        this.bookmarksObserver.next(this.dataStore.bookmarks);
+        return this.bookmarksObserver.next([
+          ...bookmarks.slice(0, index),
+          ...bookmarks.slice(index + 1)
+        ]);
     };
 
     // NOTE: Utility function to simulate server generated IDs
