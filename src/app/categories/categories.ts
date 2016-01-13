@@ -13,7 +13,7 @@ import {Category} from '../common/models/category-model';
           <img src="img/eggly-logo.png">
       </a>
       <ul class="nav nav-sidebar">
-          <li *ngFor="#category of categories">
+          <li *ngFor="#category of categoriesService.categories$ | async">
               <a [routerLink]="['/Bookmarks', {category: category.name}]">
                   {{category.name}}
               </a>
@@ -25,15 +25,5 @@ import {Category} from '../common/models/category-model';
 })
 
 export class Categories {
-    public categories: Category[];
-
     constructor(private categoriesService: CategoriesService) {};
-
-    ngOnInit() {
-        this.categoriesService.categories$.subscribe(updatedCategories => {
-            this.categories = updatedCategories;
-        });
-
-        this.categoriesService.getCategories();
-    }
 }
