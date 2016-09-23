@@ -1,5 +1,5 @@
 {
-  "name": "projects/eggly-angular2",
+  "name": "eggly-angular2",
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
@@ -20,14 +20,16 @@
     "@angular/platform-browser": "2.0.0-rc.5",
     "@angular/platform-browser-dynamic": "2.0.0-rc.5",
     "@angular/router": "3.0.0-rc.1",
+    "@types/lodash": "^4.14.36",
     "core-js": "^2.4.0",
+    "lodash": "^4.16.1",
     "rxjs": "5.0.0-beta.11",
     "ts-helpers": "^1.1.1",
     "zone.js": "0.6.12"
   },
   "devDependencies": {
     "@types/jasmine": "^2.2.30",
-    "angular-cli": "1.0.0-beta.11-webpack.8",
+    "angular-cli": "1.0.0-beta.15",
     "codelyzer": "~0.0.26",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",

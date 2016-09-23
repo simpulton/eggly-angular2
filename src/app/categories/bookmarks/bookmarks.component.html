@@ -1,0 +1,14 @@
+<div *ngFor="let bookmark of bookmarks | category: CategoriesService.getCurrentCategoryName()">
+  <button type="button" class="close" (click)="deleteBookmark(bookmark)">&times;</button>
+  <button type="button" class="btn btn-link" routerLink="/{{bookmark.category}}/bookmarks/{{bookmark.id}}/edit">
+    <span class="glyphicon glyphicon-pencil"></span>
+  </button>
+  <a [href]="bookmark.url" target="_blank">{{ bookmark.title }}</a>
+</div>
+<hr *ngIf="CategoriesService.getCurrentCategory()" />
+<div *ngIf="CategoriesService.getCurrentCategory()">
+  <button type="button" class="btn btn-link" routerLink="/{{params['category']}}/bookmarks/create">
+    <span class="glyphicon glyphicon-plus"></span>
+    Create Bookmark
+  </button>
+</div>
