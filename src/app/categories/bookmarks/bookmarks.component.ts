@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
-import {clone} from 'lodash';
-import {BookmarksService} from '../../shared/bookmarks.service';
-import {Bookmark} from '../../shared/bookmark';
-import {CategoriesService} from '../../shared/categories.service';
-import {CategoryPipe} from '../category.pipe';
+import { ActivatedRoute, Params } from '@angular/router';
+import { clone } from 'lodash';
+import { BookmarksService } from '../../shared/bookmarks.service';
+import { Bookmark } from '../../shared/bookmark';
+import { CategoriesService } from '../../shared/categories.service';
+import { CategoryPipe } from '../category.pipe';
 
 @Component({
   selector: 'app-bookmarks',

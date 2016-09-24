@@ -1,3 +1,14 @@
-<p>
-  edit works!
-</p>
+<h4>Editing {{ bookmark.title }}</h4>
+
+<form class="edit-form" role="form" (ngSubmit)="updateBookmark(editedBookmark)" novalidate>
+  <div class="form-group">
+    <label>Bookmark Title</label>
+    <input type="text" name="title" class="form-control" [(ngModel)]="editedBookmark.title" placeholder="Enter title">
+  </div>
+  <div class="form-group">
+    <label>Bookmark URL</label>
+    <input type="text" name="url" class="form-control" [(ngModel)]="editedBookmark.url" placeholder="Enter URL">
+  </div>
+  <button type="submit" class="btn btn-info btn-lg">Save</button>
+  <button type="button" class="btn btn-default btn-lg pull-right" (click)="cancelEditing()">Cancel</button>
+</form>

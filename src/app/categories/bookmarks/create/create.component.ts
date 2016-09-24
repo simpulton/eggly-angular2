@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
-import {BookmarksService} from '../../../shared/bookmarks.service';
-import {Bookmark} from '../../../shared/bookmark';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { BookmarksService } from '../../../shared/bookmarks.service';
+import { Bookmark } from '../../../shared/bookmark';
 
 @Component({
   selector: 'app-create',
@@ -35,9 +35,7 @@ export class CreateComponent implements OnInit{
   }
 
   returnToBookmarks(): void {
-    this.Router.navigate(['Bookmarks', {
-      category: this.params['category']
-    }]);
+    this.Router.navigate([this.params['category']]);
   }
 
   cancelCreating(): void {
