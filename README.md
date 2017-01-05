@@ -1,9 +1,28 @@
-# EgglyAngular2
+# Eggly 2
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
+![eggly-angular2](https://cloud.githubusercontent.com/assets/590361/11959243/803ca606-a889-11e5-8143-d328516e8324.jpg)
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Welcome to the most amazing bookmark manager EVER!. It is built using [Angular 2](https://angular.io) and the [Angular CLI](https://cli.angular.io/), along with demonstrating the following concepts:
+
+* A robust build system thanks to the Angular CLI
+* Best practices in app structure
+* Component-driven architecture
+* Routing
+* Server communication
+* Unit testing
+
+## Prerequisites
+You must have [Node v4+ and NPM v3+](https://nodejs.org) installed.
+
+## Getting started
+Run the following in your terminal:
+``` bash
+git clone https://github.com/simpulton/eggly-angular2.git
+cd eggly-angular2
+npm i
+npm start
+```
+The app will be available on [http://localhost:4200](http://localhost:4200) and will automatically reload when files are changed.
 
 ## Code scaffolding
 
@@ -11,7 +30,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build, and use the `-aot` flag to enable ahead-of-time compilation.
 
 ## Running unit tests
 
@@ -21,10 +40,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
-
-## Deploying to Github Pages
-
-Run `ng github-pages:deploy` to deploy to Github Pages.
 
 ## Further help
 
