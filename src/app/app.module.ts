@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { routing, appRoutingProviders } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -17,21 +17,19 @@ import { CategoriesService, BookmarksService } from './shared';
     AppComponent,
     CategoriesComponent,
     CategoryPipe,
-    CategoryPipe,
     BookmarksComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    AppRoutingModule
   ],
   providers: [
     CategoriesService,
-    BookmarksService,
-    appRoutingProviders
+    BookmarksService
   ],
   bootstrap: [AppComponent]
 })

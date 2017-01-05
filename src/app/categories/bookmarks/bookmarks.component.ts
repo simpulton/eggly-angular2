@@ -4,13 +4,11 @@ import { clone } from 'lodash';
 import { BookmarksService } from '../../shared/bookmarks.service';
 import { Bookmark } from '../../shared/bookmark';
 import { CategoriesService } from '../../shared/categories.service';
-import { CategoryPipe } from '../category.pipe';
 
 @Component({
   selector: 'app-bookmarks',
   templateUrl: './bookmarks.component.html',
-  styleUrls: ['./bookmarks.component.css'],
-  pipes: [ CategoryPipe ]
+  styleUrls: ['./bookmarks.component.css']
 })
 
 export class BookmarksComponent implements OnInit {

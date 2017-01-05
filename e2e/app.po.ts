@@ -1,6 +1,6 @@
-import { browser, element, by } from 'protractor/globals';
+import { browser, element, by } from 'protractor';
 
-export class Projects/egglyAngular2Page {
+export class EgglyAngular2Page {
   navigateTo() {
     return browser.get('/');
   }

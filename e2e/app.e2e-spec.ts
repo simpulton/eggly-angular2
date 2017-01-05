@@ -1,10 +1,10 @@
-import { Projects/egglyAngular2Page } from './app.po';
+import { EgglyAngular2Page } from './app.po';
 
-describe('projects/eggly-angular2 App', function() {
-  let page: Projects/egglyAngular2Page;
+describe('eggly-angular2 App', function() {
+  let page: EgglyAngular2Page;
 
   beforeEach(() => {
-    page = new Projects/egglyAngular2Page();
+    page = new EgglyAngular2Page();
   });
 
   it('should display message saying app works', () => {
